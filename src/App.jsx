@@ -1,17 +1,15 @@
-import "./App.css";
-import Navbar from "./components/navbar";
-import Header from "./components/header";
-import HeroImage from "./components/hero-image";
+// src/App.jsx
+import "./App.css"; // If you have custom styles
 import TextReveal from "./components/text-reveal";
+import ImageSlider from "./components/image-slider.jsx";
+import HeroPage from "./components/hero.jsx";
 
 function App() {
   return (
     <>
-        <Navbar />
-        <Header />
-        <HeroImage />
-        <TextReveal />
-
+      <HeroPage />
+      <TextReveal />
+      <ImageSlider />
     </>
   );
 }
