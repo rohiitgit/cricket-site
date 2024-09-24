@@ -1,4 +1,4 @@
-import heroImage from "/home/rohiit/Public/cricket-site/public/hero-image.svg";
+import heroImage from "../assets/hero-image.svg";
 
 const HeroImage = () => {
   return (
