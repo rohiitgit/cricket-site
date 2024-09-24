@@ -23,6 +23,12 @@ const ImageSlider = () => {
     setCurrentIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length);
   };
 
+  const getPreviewImages = () => {
+    return Array.from({ length: 3 }, (_, index) => {
+      return images[(currentIndex + 1 + index) % images.length];
+    });
+  };
+
   return (
     <div className="relative w-full h-screen">
       <div className="absolute inset-0 aspect-[16/9]">
@@ -44,24 +50,39 @@ const ImageSlider = () => {
             </div>
           </motion.div>
         ))}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-4">
+              <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-4">
         <button 
           className="p-2 bg-gray-800 text-white rounded-full hover:bg-gray-700 transition"
           onClick={prevSlide}
           aria-label="Previous Slide"
         >
-          &#10094; {/* Left arrow */}
+          &#10094;
         </button>
         <button 
           className="p-2 bg-gray-800 text-white rounded-full hover:bg-gray-700 transition"
           onClick={nextSlide}
           aria-label="Next Slide"
         >
-          &#10095; {/* Right arrow */}
+          &#10095;
         </button>
       </div>
       </div>
-      
+
+      <div className="absolute right-4 top-1/2 transform -translate-y-1/2 flex space-x-4">
+        {getPreviewImages().map((item, index) => (
+          <motion.div
+            key={index}
+            className="h-40 w-24 bg-center bg-cover rounded-md overflow-hidden"
+            style={{ backgroundImage: `url(${item.image})`, objectFit: 'cover' }} 
+          >
+            <img
+              src={item.image}
+              alt={item.title}
+              className="w-full h-full object-cover"
+            />
+          </motion.div>
+        ))}
+      </div>
     </div>
   );
 };
