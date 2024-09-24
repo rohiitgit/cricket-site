@@ -1,13 +1,15 @@
-import { BrowserRouter } from "react-router-dom";
 import "./App.css";
 import Navbar from "./components/navbar";
+import Header from "./components/header";
+import HeroImage from "./components/hero-image";
 
 function App() {
   return (
     <>
-      <BrowserRouter>
-      <Navbar />
-      </BrowserRouter>
+        <Navbar />
+        <Header />
+        <HeroImage />
+
     </>
   );
 }
