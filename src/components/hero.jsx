@@ -1,7 +1,7 @@
 import { Link, useLocation } from 'react-router-dom';
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
-import heroImage from "../assets/hero-image.svg";
+import heroImage from "../../public/hero-image.svg";
 
 const HeroPage = () => {
   const location = useLocation();

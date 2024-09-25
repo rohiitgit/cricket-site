@@ -3,7 +3,7 @@ import { gsap } from "gsap";
 import Lenis from "lenis";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import midSecImage from "../assets/mid-sec.svg"; 
+import midSecImage from "../../public/mid-sec.svg";
 
 const TextReveal = () => {
   const textRef = useRef(null);

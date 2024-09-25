@@ -3,6 +3,7 @@ import "./App.css"; // If you have custom styles
 import TextReveal from "./components/text-reveal";
 import HeroPage from "./components/hero.jsx";
 import Slider from "./components/Slider.jsx";
+import SportsArticles from "./components/articles.jsx";
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
       <HeroPage />
       <TextReveal />
       <Slider />
+      <SportsArticles />
     </>
   );
 }
