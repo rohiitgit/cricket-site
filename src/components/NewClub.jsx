@@ -54,13 +54,23 @@ const NewClub = () => {
           <div className='flex justify-around items-center gap-9 relative w-full h-auto top-[300px]'>
               <div className='pt-32'>
                   <h1 data-aos="fade-up" className='w-[200px] font-jost font-semibold text-[30px] leading-[42px] text-[#262626]'>Recent News</h1>
-                  <div className='flex gap-8 mt-5'>
+                  <div className='flex gap-20 mt-5'>
                       
-                      <div data-aos="fade-right" className="w-[297.69px] h-[325.93px] bg-[url('../public/svg/new1.svg')] rounded-[6.61539px]">
-                      </div>
-                      <div data-aos="fade-left" className="p-3 flex flex-col gap-3 w-[297.69px] h-[325.93px] left-[420px] bg-[#EBEEF3] rounded-[6.61539px]">
+                      <div data-aos="fade-right" className="w-[300px] object-contain bg-no-repeat h-[325.93px] bg-[url('../public/svg/new1.svg')] rounded-[6.61539px]">
+                          <div class="w-[300px] h-[89.09px] mt-60 bg-gradient-to-r from-[rgba(255,255,255,0.24)] to-[rgba(255,255,255,0.06)] shadow-[0px_0px_55.1282px_-27.5641px_rgba(0,0,0,0.5)] backdrop-blur-[55.1282px] rounded-b-[6.61539px] box-border">
+                              <div class="pt-4 pl-4 h-[10.84px] font-sans font-medium text-[15px] text-[#EBEEF3]">
+                                  Day 5 Highlights
+                              </div>
+                              <div class="pt-5 pl-4 h-[21.68px] font-sans font-bold text-[19px] text-[#EBEEF3]">
+                                  CSK 2023 IPL Champions
+                              </div>
+
+                          </div>
+   </div>
+                      <div data-aos="fade-left" className="p-3 flex flex-col gap-3 w-[300px] h-[325.93px] left-[420px] bg-[#EBEEF3] rounded-[6.61539px]">
                           <div className=" flex gap-4 justify-center items-center " data-aos="zoom-in">
                               <div className="w-[77.18px] h-[76.05px] bg-[url('../public/svg/img2.svg')] rounded-[3.30769px]">
+                                  
                               </div>
                               <div className="w-[184.13px] h-[39.41px] font-jost font-semibold text-[16px] leading-[20px] text-[#262626]">
                                   CSK 2023 IPL Champions
@@ -110,8 +120,8 @@ const NewClub = () => {
                   <h1 data-aos="fade-up" className=' w-[400px] font-jost font-semibold text-[30px] leading-[42px] text-[#262626]'>Clubs Ranking</h1>
 
 
-                  <div data-aos="zoom-in" className="mt-5  w-[628.46px] h-[325.93px] bg-[#EBEEF3] rounded-[6.61539px]">
-                      <div className=" w-[628.46px] h-[292.25px] py-6 px-3">
+                  <div data-aos="zoom-in" className="mt-5  w-[700px] h-[325.93px] bg-[#EBEEF3] rounded-[6.61539px]">
+                      <div className=" w-[700px] h-[292.25px] py-6 px-3">
                           <div className='flex justify-between'>
                               <div className="pl-4 w-[48.51px] h-[22.66px] text-[#262626] text-[16px] leading-[23px] font-normal capitalize">
                                   Club
@@ -154,7 +164,7 @@ const NewClub = () => {
                                       <div className="w-[8.67px] h-[22.66px] text-[#262626] text-[14px] leading-[23px] font-normal capitalize">
                                           {club.rank}
                                       </div>
-                                            <div className={`w-[26px] h-[21.14px] bg-[url('${club.imgSrc}')]`}>
+                                              <div className={`w-[26px] h-[21.14px] bg-[url('${club.imgSrc}')]`} style={{ backgroundImage: `url(${ club.imgSrc })` }}>
                                       </div>
                                       <div className="w-[160px] h-[22.66px] left-[825.85px] text-[#262626] text-[14px] leading-[23px] font-normal capitalize">
                                           {club.name}

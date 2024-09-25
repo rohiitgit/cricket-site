@@ -1,15 +1,12 @@
-import React, { useEffect} from 'react';
+import React, { useEffect } from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-
-
+import { useNavigate } from 'react-router-dom';
 
 const TextReveal = () => {
+    const navigate = useNavigate(); // Initialize navigate hook
 
-
-    
     useEffect(() => {
-       
         AOS.init({
             duration: 5000,
             easing: 'ease-in-out',
@@ -17,7 +14,9 @@ const TextReveal = () => {
         });
     }, []);
 
-
+    const handleRegisterClick = () => {
+        navigate('/register'); // Navigate to the register page
+    };
 
     return (
         <>
@@ -35,21 +34,19 @@ const TextReveal = () => {
                             </button>
                         </div>
 
-
-                        <div className="w-[225px] flex justify-center h-[50px] bg-[#D9D9D9] cursor-pointer rounded-[5px] hover:bg-gray-300 transform transition-all duration-300 ease-in-out">
+                        <div
+                            className="w-[225px] flex justify-center h-[50px] bg-[#D9D9D9] cursor-pointer rounded-[5px] hover:bg-gray-300 transform transition-all duration-300 ease-in-out"
+                            onClick={handleRegisterClick}
+                        >
                             <button className="font-jost font-medium text-[18px] leading-[26px] text-black">
                                 Register Your Team
                             </button>
-                        </div>       
-
-</div>
-                 
-                </div>
-            
-                    <div className="w-[630px] h-[468px] bg-[url('../public/svg/img.svg')]" data-aos="zoom-in">
-                  
+                        </div>
                     </div>
-               
+                </div>
+
+                <div className="w-[630px] h-[468px] bg-[url('../public/svg/img.svg')]" data-aos="zoom-in">
+                </div>
             </div>
         </>
     );
