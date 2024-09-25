@@ -2,6 +2,7 @@ import { Link, useLocation } from "react-router-dom";
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import Aos from "aos";
+import heroImg from "../../public/svg/hero-image.png"
 
 const HeroPage = () => {
   const location = useLocation();
@@ -90,7 +91,7 @@ const HeroPage = () => {
 
       <div className="w-full">
         <img
-          src={"../public/svg/hero-image.png"}
+          src={heroImg}
           data-aos="fade-up"
           alt="A visually appealing hero image related to cricket"
           className="w-full h-full object-cover"
