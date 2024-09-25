@@ -57,31 +57,36 @@ const TextReveal = () => {
   }, []);
 
   return (
-    <div className="relative flex flex-col items-center h-auto pt-20 md:pt-10">
-      <div className="max-w-screen-lg text-center font-jost font-normal text-3xl leading-[70px] text-black mb-10 px-4">
-        Cricket has the incredible power to unite people from all walks of life, fostering camaraderie, respect, and friendships that stand the test of time. It is more than just a sport, a cultural force that transcends boundaries, bringing together individuals from different backgrounds, languages, and beliefs. Cricket creates a common ground where passion for the game bridges divides and builds lasting connections.
+    <div className="container mx-auto relative flex flex-col items-center h-auto pt-20 md:pt-10 w-full">
+      {/* Main Content Row */}
+      <div className="row flex flex-col items-center mb-10 px-4 w-full">
+        <div className="max-w-screen-lg text-center font-jost font-normal text-3xl leading-[70px] text-black mb-10">
+          Cricket has the incredible power to unite people from all walks of life, fostering camaraderie, respect, and friendships that stand the test of time. It is more than just a sport, a cultural force that transcends boundaries, bringing together individuals from different backgrounds, languages, and beliefs. Cricket creates a common ground where passion for the game bridges divides and builds lasting connections.
+        </div>
+
+        {/* Nested Column for Text and Image */}
+        <div className="flex flex-col md:flex-row items-start justify-between w-full mb-20">
+          <h1
+            ref={textRef}
+            className="w-full md:max-w-2xl mb-10 md:mb-0 font-jost font-normal text-lg leading-[34px] text-black md:mr-10"
+            data-aos="fade-up"
+          >
+            At Legends, we believe in the power of cricket to transform communities, and we are dedicated to organizing top-tier tournaments that bring this vision to life. From local leagues to regional championships, we help players and teams at all levels experience the thrill of competitive cricket. Our expertly managed tournaments ensure that every player, team, and fan has an unforgettable experience, making it easy to get involved, compete, and grow in the sport.
+          </h1>
+
+          <div
+            ref={imageRef}
+            className="w-full md:w-[630px] h-[400px] md:h-[468px] bg-cover bg-center"
+            style={{
+              backgroundImage: `url(${midSecImage})`,
+            }}
+            data-aos="zoom-in"
+          />
+        </div>
       </div>
 
-      <div className="flex flex-col md:flex-row items-start justify-between w-full px-4 mb-20">
-        <h1
-          ref={textRef}
-          className="w-full md:max-w-2xl mb-10 md:mb-0 font-jost font-normal text-lg leading-[34px] text-black md:mr-10"
-          data-aos="fade-up"
-        >
-          At Legends, we believe in the power of cricket to transform communities, and we are dedicated to organizing top-tier tournaments that bring this vision to life. From local leagues to regional championships, we help players and teams at all levels experience the thrill of competitive cricket. Our expertly managed tournaments ensure that every player, team, and fan has an unforgettable experience, making it easy to get involved, compete, and grow in the sport.
-        </h1>
-
-        <div
-          ref={imageRef}
-          className="w-full md:w-[630px] h-[400px] md:h-[468px] bg-cover bg-center"
-          style={{
-            backgroundImage: `url(${midSecImage})`,
-          }}
-          data-aos="zoom-in"
-        />
-      </div>
-
-      <div className="flex justify-center space-x-5 mb-10">
+      {/* Button Row */}
+      <div className="flex justify-center space-x-5 mb-10 w-full">
         <div className="flex justify-center h-[50px] bg-[#D9D9D9] cursor-pointer rounded-[5px] px-4 items-center">
           <button className="font-jost font-medium text-[18px] leading-[26px] text-black">
             View Tournaments

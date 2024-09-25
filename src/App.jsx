@@ -4,6 +4,7 @@ import TextReveal from "./components/text-reveal";
 import HeroPage from "./components/hero.jsx";
 import Slider from "./components/Slider.jsx";
 import SportsArticles from "./components/articles.jsx";
+import Footer from "./components/footer.jsx";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <TextReveal />
       <Slider />
       <SportsArticles />
+      <Footer />
     </>
   );
 }

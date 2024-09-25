@@ -59,8 +59,9 @@ const Slider = () => {
   }, [currentIndex]);
 
   return (
-    <div className="relative w-full h-screen">
-      <div className="absolute inset-0">
+    <div className="container mx-auto relative w-full h-screen overflow-hidden">
+      {/* Slider Row */}
+      <div className="row absolute inset-0">
         {itemsData.map((item, index) => (
           <div
             key={index}
@@ -82,7 +83,8 @@ const Slider = () => {
         ))}
       </div>
 
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-4">
+      {/* Navigation Buttons Row */}
+      <div className="navigation-buttons absolute bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-4">
         <button
           className="p-2 bg-gray-800 text-white rounded-full hover:bg-gray-700 transition"
           onClick={prevSlide}
@@ -99,7 +101,8 @@ const Slider = () => {
         </button>
       </div>
 
-      <div className="absolute right-4 top-1/2 transform -translate-y-1/2 flex space-x-4">
+      {/* Preview Images Column */}
+      <div className="preview-images absolute right-4 top-1/2 transform -translate-y-1/2 flex space-x-4">
         {getPreviewImages().map((item, index) => (
           <div
             key={index}

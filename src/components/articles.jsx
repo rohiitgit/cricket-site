@@ -1,11 +1,8 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import articleImage1 from '../../public/article/1.svg';
 import articleImage2 from '../../public/article/2.svg';
 import articleImage3 from '../../public/article/3.svg';
-
-gsap.registerPlugin(ScrollTrigger);
 
 const articles = [
   {
@@ -32,116 +29,84 @@ const articles = [
 ];
 
 const SportsArticles = () => {
+  const [startIndex, setStartIndex] = useState(0);
   const articleRefs = useRef([]);
-  const buttonsRef = useRef(null);
+
+  const maxIndex = articles.length;
+
+  const showNextArticles = () => {
+    const nextIndex = (startIndex + 1) % maxIndex;
+    animateArticles("left", nextIndex);
+  };
+
+  const showPreviousArticles = () => {
+    const prevIndex = (startIndex - 1 + maxIndex) % maxIndex;
+    animateArticles("right", prevIndex);
+  };
+
+  const animateArticles = (direction, nextIndex) => {
+    const currentArticleRefs = articleRefs.current;
+
+    // Animate all articles out with fade
+    gsap.to(currentArticleRefs, {
+      duration: 0.5,
+      x: direction === "left" ? -50 : 50,
+      opacity: 0,
+      ease: 'power2.out',
+      stagger: 0.1,
+      onComplete: () => {
+        // Update the start index
+        setStartIndex(nextIndex);
+
+        // Reset positions for all articles without changing opacity immediately
+        gsap.set(currentArticleRefs, { x: 0 });
+
+        // Animate the new articles into place with bounce and scale
+        gsap.to(currentArticleRefs, {
+          duration: 0.7,
+          opacity: 1,
+          x: 0,
+          scale: 1.05, // Scale up a bit on entry
+          ease: 'bounce.out',
+          stagger: 0.1,
+          onComplete: () => {
+            // Return to original scale
+            gsap.to(currentArticleRefs, {
+              duration: 0.2,
+              scale: 1,
+              ease: 'power1.inOut'
+            });
+          },
+        });
+      },
+    });
+  };
 
   useEffect(() => {
-    articleRefs.current.forEach((ref, index) => {
-      const imageRef = ref.querySelector('.article-image');
-      const avatarRef = ref.querySelector('.article-avatar');
-      const titleRef = ref.querySelector('.article-title');
-      const descriptionRef = ref.querySelector('.article-description');
-
-      gsap.fromTo(
-        imageRef,
-        { opacity: 0, scale: 0.8 },
-        {
-          opacity: 1,
-          scale: 1,
-          duration: 1,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: ref,
-            start: "top 80%",
-            toggleActions: "play none none reverse",
-          },
-        }
-      );
-
-      gsap.fromTo(
-        avatarRef,
-        { opacity: 0, y: 20 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 1,
-          ease: "power3.out",
-          delay: 0.5,
-          scrollTrigger: {
-            trigger: ref,
-            start: "top 80%",
-            toggleActions: "play none none reverse",
-          },
-        }
-      );
-
-      gsap.fromTo(
-        titleRef,
-        { opacity: 0, y: 20 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 1,
-          ease: "power3.out",
-          delay: 1,
-          scrollTrigger: {
-            trigger: ref,
-            start: "top 80%",
-            toggleActions: "play none none reverse",
-          },
-        }
-      );
-
-      gsap.fromTo(
-        descriptionRef,
-        { opacity: 0, y: 20 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 1,
-          ease: "power3.out",
-          delay: 1.5,
-          scrollTrigger: {
-            trigger: ref,
-            start: "top 80%",
-            toggleActions: "play none none reverse",
-          },
-        }
-      );
-    });
-
-    gsap.fromTo(
-      buttonsRef.current,
-      { opacity: 0, y: 20 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 1,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: buttonsRef.current,
-          start: "top 90%",
-          toggleActions: "play none none reverse",
-        },
+    articleRefs.current.forEach((ref) => {
+      if (ref) {
+        gsap.set(ref, { opacity: 1 }); // Initially show all articles
       }
-    );
+    });
   }, []);
 
   return (
-    <div className="relative flex flex-col items-start">
+    <div className="container mx-auto flex flex-col items-start relative">
       <h1 className="font-jost font-semibold text-2xl md:text-3xl text-[#262626] mt-10">
         Sports Articles
       </h1>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-        {articles.map((article, index) => {
-          const avatarSrc = `https://i.pravatar.cc/50?img=${index + 1}`;
-          const articleRef = (el) => (articleRefs.current[index] = el);
+
+      {/* Articles Row */}
+      <div className="row grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 w-full">
+        {Array.from({ length: 3 }).map((_, index) => {
+          const displayIndex = (startIndex + index) % maxIndex;
+          const article = articles[displayIndex];
 
           return (
             <div
               key={index}
-              ref={articleRef}
-              className="bg-white rounded-lg mt-4 relative text-left overflow-hidden"
+              ref={(el) => (articleRefs.current[index] = el)}
+              className="bg-white rounded-lg mt-4 relative text-left overflow-hidden shadow-md transition-transform transform"
             >
               <img
                 src={article.imgSrc}
@@ -150,7 +115,7 @@ const SportsArticles = () => {
               />
               <div className="flex items-center mb-2 p-2 article-avatar">
                 <img
-                  src={avatarSrc}
+                  src={`https://i.pravatar.cc/50?img=${displayIndex + 1}`}
                   alt={`Avatar of ${article.author}`}
                   className="w-12 h-12 rounded-full mr-2"
                 />
@@ -173,11 +138,13 @@ const SportsArticles = () => {
           );
         })}
       </div>
-      <div ref={buttonsRef} className="flex w-full mt-8">
-        <button className="bg-[#262626] w-10 mr-6 rounded-md p-2 text-white">
+
+      {/* Buttons Row */}
+      <div className="buttons-row flex justify-left w-full mt-8">
+        <button onClick={showPreviousArticles} className="bg-[#262626] w-10 mr-6 rounded-md p-2 text-white">
           ←
         </button>
-        <button className="bg-[#262626] w-10 rounded-md p-2 text-white">
+        <button onClick={showNextArticles} className="bg-[#262626] w-10 rounded-md p-2 text-white">
           →
         </button>
       </div>
