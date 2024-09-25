@@ -90,7 +90,7 @@ const HeroPage = () => {
 
       <div className="w-full">
         <img
-          src={"../public/svg/hero-image.svg"}
+          src={"../public/svg/hero-image.png"}
           data-aos="fade-up"
           alt="A visually appealing hero image related to cricket"
           className="w-full h-full object-cover"
