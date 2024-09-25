@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import AOS from "aos";
-import "aos/dist/aos.css"; 
+import "aos/dist/aos.css";
 import img5 from "../../public/svg/img5.svg";
 
 const clubRankings = [
@@ -49,7 +49,7 @@ const NewClub = () => {
     });
   }, []);
   return (
-    <>
+    <div>
       <div className="flex justify-center px-6 items-center gap-9 relative w-full h-auto top-[300px]">
         <div className="pt-32">
           <h1
@@ -206,7 +206,7 @@ const NewClub = () => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

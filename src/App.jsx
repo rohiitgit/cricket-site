@@ -12,17 +12,20 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={
-          <>
-            <Hero />
-            <TextRevel2 />
-            <TextReveal />
-            <Slider />
-            <NewClub />
-            <SportsArticles />
-            <Footer />
-          </>
-        } />
+        <Route 
+          path="/" 
+          element={
+            <>
+              <Hero />
+              <TextRevel2 />
+              <TextReveal />
+              <Slider />
+              <NewClub />
+              <SportsArticles />
+              <Footer />
+            </>
+          } 
+        />
         <Route path="/register" element={<RegForm />} />
       </Routes>
     </Router>
