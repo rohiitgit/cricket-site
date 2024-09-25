@@ -5,27 +5,30 @@ import slide1 from "../../public/image-slider/slide-1.svg";
 import slide2 from "../../public/image-slider/slide-2.svg";
 import slide3 from "../../public/image-slider/slide-3.svg";
 import slide4 from "../../public/image-slider/slide-4.svg";
-import Aos from "aos";
 
 const itemsData = [
   {
-    title: "Lossless Youths",
-    description: "Lorem ipsum, dolor sit amet consectetur adipisicing elit.",
+    title: "Test Matches",
+    description:
+      "The longest format, played over 5 days, testing endurance, skill, and strategy. Ideal for traditionalists who enjoy the deeper aspects of the game.",
     imageUrl: slide1,
   },
   {
-    title: "Estrange Bond",
-    description: "Lorem ipsum, dolor sit amet consectetur adipisicing elit.",
+    title: "One Day Internationals (ODIs):",
+    description:
+      "A 50-over format, blending strategy and pace. Matches are completed in a day, offering a balanced experience of batting and bowling.",
     imageUrl: slide2,
   },
   {
-    title: "The Gate Keeper",
-    description: "Lorem ipsum, dolor sit amet consectetur adipisicing elit.",
+    title: "T20",
+    description:
+      "A fast-paced, 20-over format designed for thrill-seekers. Action-packed and highly competitive, it's perfect for high-energy, quick matches.",
     imageUrl: slide3,
   },
   {
-    title: "Last Trace Of Us",
-    description: "Lorem ipsum, dolor sit amet consectetur adipisicing elit.",
+    title: "T10",
+    description:
+      "The shortest format, played over just 10 overs per side. It’s cricket at lightning speed, with every ball bringing excitement and intensity.",
     imageUrl: slide4,
   },
 ];
@@ -59,17 +62,13 @@ const Slider = () => {
     return () => clearTimeout(timer);
   }, [currentIndex]);
 
-  useEffect(() => {
-    Aos.init({
-      duration: 1000, // Animation duration in milliseconds
-      once: true, // Only animate once when scrolled into view
-    });
-  }, []);
-
   return (
-    <div className="container mx-auto relative w-full h-screen overflow-hidden">
+    <div
+      className="relative w-full h-screen overflow-hidden"
+      aria-live="polite"
+    >
       {/* Slider Row */}
-      <div className="row absolute inset-0" data-aos="fade-up">
+      <div className="row absolute inset-0">
         {itemsData.map((item, index) => (
           <div
             key={index}
@@ -81,7 +80,7 @@ const Slider = () => {
             <div className="flex items-center justify-start h-full bg-black bg-opacity-50 p-8 md:p-16">
               <div className="text-white">
                 <h2 className="text-2xl md:text-4xl font-bold">{item.title}</h2>
-                <p className="mt-4 text-lg md:text-xl">{item.description}</p>
+                <p className="mt-4 text-sm md:text-lg lg:text-xl w-96">{item.description}</p>
                 <button className="mt-4 px-4 py-2 bg-gray-800 text-white rounded hover:bg-gray-700">
                   Read More
                 </button>

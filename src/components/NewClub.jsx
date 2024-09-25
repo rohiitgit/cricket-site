@@ -163,7 +163,7 @@ const NewClub = () => {
                           {club.rank}
                         </div>
                         <div
-                          className={`w-[26px] h-[21.14px] bg-[url('${club.imgSrc}')] bg-center bg-cover`}
+                          className={`w-[26px] h-[21.14px] bg-[url(${club.imgSrc})] bg-center bg-cover`}
                           style={{ backgroundImage: `url(${club.imgSrc})` }}
                           aria-label={club.name}
                         ></div>
