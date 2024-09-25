@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
 import "./Slider.css";
 
-import slide1 from "../../public/image-slider/slide-1.svg";
-import slide2 from "../../public/image-slider/slide-2.svg";
-import slide3 from "../../public/image-slider/slide-3.svg";
-import slide4 from "../../public/image-slider/slide-4.svg";
+import slide1 from "../../public/image-slider/slide-1.jpg";
+import slide2 from "../../public/image-slider/slide-2.jpg";
+import slide3 from "../../public/image-slider/slide-3.png";
+import slide4 from "../../public/image-slider/slide-4.png";
+import Aos from "aos";
 
 const itemsData = [
   {
@@ -62,13 +63,21 @@ const Slider = () => {
     return () => clearTimeout(timer);
   }, [currentIndex]);
 
+  useEffect(() => {
+    Aos.init({
+      duration: 1000, // Animation duration in milliseconds
+      once: true, // Only animate once when scrolled into view
+    });
+  }, []);
+  
   return (
     <div
       className="relative w-full h-screen overflow-hidden"
       aria-live="polite"
     >
       {/* Slider Row */}
-      <div className="row absolute inset-0">
+      <div className="row absolute inset-0"
+      data-aos='fade-up'>
         {itemsData.map((item, index) => (
           <div
             key={index}
@@ -79,9 +88,9 @@ const Slider = () => {
           >
             <div className="flex items-center justify-start h-full bg-black bg-opacity-50 p-8 md:p-16">
               <div className="text-white">
-                <h2 className="text-2xl md:text-4xl font-bold">{item.title}</h2>
-                <p className="mt-4 text-sm md:text-lg lg:text-xl w-96">{item.description}</p>
-                <button className="mt-4 px-4 py-2 bg-gray-800 text-white rounded hover:bg-gray-700">
+                <h2 className="text-2xl md:text-4xl font-bold" data-aos='fade-up'>{item.title}</h2>
+                <p className="mt-4 text-sm md:text-lg lg:text-xl w-96" data-aos='fade-up'>{item.description}</p>
+                <button className="mt-4 px-4 py-2 bg-gray-800 text-white rounded hover:bg-gray-700" data-aos='fade-up'>
                   Read More
                 </button>
               </div>
@@ -94,6 +103,7 @@ const Slider = () => {
       <div className="navigation-buttons absolute bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-4">
         <button
           className="p-2 bg-gray-800 text-white rounded-full hover:bg-gray-700 transition"
+          data-aos='fade-up'
           onClick={prevSlide}
           aria-label="Previous Slide"
         >
@@ -101,6 +111,7 @@ const Slider = () => {
         </button>
         <button
           className="p-2 bg-gray-800 text-white rounded-full hover:bg-gray-700 transition"
+          data-aos='fade-up'
           onClick={nextSlide}
           aria-label="Next Slide"
         >
@@ -109,7 +120,7 @@ const Slider = () => {
       </div>
 
       {/* Preview Images Column */}
-      <div className="preview-images absolute right-4 top-1/2 transform -translate-y-1/2 flex space-x-4">
+      <div className="preview-images absolute right-4 top-1/2 transform -translate-y-1/2 flex space-x-4" data-aos='fade-up'>
         {getPreviewImages().map((item, index) => (
           <div
             key={index}
