@@ -11,20 +11,20 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 function App() {
   return (
     <Router>
-      <div className="flex flex-col space-y-8">
-        <Hero className="block " />
-        <TextRevel2 className="block" />
-
-        <Routes>
-          <Route path="/" element={<TextReveal />} />
-          <Route path="/register" element={<RegForm />} />
-        </Routes>
-
-        <Slider className="block" />
-        <NewClub className="block" />
-        <SportsArticles className='block' />
-        <Footer className='block' />
-      </div>
+      <Routes>
+        <Route path="/" element={
+          <>
+            <Hero />
+            <TextRevel2 />
+            <TextReveal />
+            <Slider />
+            <NewClub />
+            <SportsArticles />
+            <Footer />
+          </>
+        } />
+        <Route path="/register" element={<RegForm />} />
+      </Routes>
     </Router>
   );
 }
