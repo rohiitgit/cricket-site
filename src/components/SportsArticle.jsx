@@ -48,29 +48,24 @@ const SportsArticles = () => {
         const currentArticleRefs = articleRefs.current.filter(Boolean);
         const offset = direction === "left" ? -20 : 20;
 
-        // Animate all articles out with fade and slide
         gsap.to(currentArticleRefs, {
-            duration: 0.4, // Duration for exit
+            duration: 0.6,
             x: offset,
             opacity: 0,
-            scale: 0.95, // Scale down on exit
-            ease: 'power2.out', // Easing for exit
+            scale: 0.95,
+            ease: 'power2.out',
             stagger: 0.05,
             onComplete: () => {
-                // Update the start index
                 setStartIndex(nextIndex);
-
-                // Reset positions for all articles without changing opacity immediately
                 gsap.set(currentArticleRefs, { x: 0, scale: 1 });
-
-                // Animate the new articles into place with fade and slide
                 gsap.to(currentArticleRefs, {
-                    duration: 0.4, // Same duration for entry
+                    duration: 0.6,
                     opacity: 1,
                     x: 0,
-                    scale: 1, // No scale change on entry
-                    ease: 'power2.out', // Same easing for entry
+                    scale: 1,
+                    ease: 'power2.out',
                     stagger: 0.05,
+                    delay: 0.1, // Added delay for smoother transition
                 });
             },
         });
@@ -80,19 +75,19 @@ const SportsArticles = () => {
         const currentArticleRefs = articleRefs.current.filter(Boolean);
         currentArticleRefs.forEach((ref) => {
             if (ref) {
-                gsap.set(ref, { opacity: 1 }); // Initially show all articles
+                gsap.set(ref, { opacity: 1 });
             }
         });
     }, [startIndex]);
 
     return (
-        <div className="container mx-auto flex flex-col items-start relative h-auto top-80">
-            <h1 className="font-jost font-semibold text-2xl md:text-3xl text-[#262626] top-10 bottom-5">
+        <div className="top-96 container mx-auto flex flex-col items-start relative h-auto p-4 md:p-8">
+            <h1 className="font-jost font-semibold text-2xl md:text-3xl text-[#262626] mb-5">
                 Sports Articles
             </h1>
 
             {/* Articles Row */}
-            <div className="row grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 w-full">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 w-full">
                 {Array.from({ length: 3 }).map((_, index) => {
                     const displayIndex = (startIndex + index) % maxIndex;
                     const article = articles[displayIndex];
@@ -101,14 +96,14 @@ const SportsArticles = () => {
                         <div
                             key={index}
                             ref={(el) => (articleRefs.current[index] = el)}
-                            className="bg-white rounded-lg mt-4 relative text-left overflow-hidden transition-transform transform"
+                            className="bg-white rounded-lg overflow-hidden shadow-md transition-transform transform"
                         >
                             <img
                                 src={article.imgSrc}
                                 alt={`Image for ${article.title}`}
-                                className="article-image w-full h-[200px] md:h-[273.44px] rounded-md object-cover"
+                                className="w-full h-48 md:h-60 object-cover"
                             />
-                            <div className="flex items-center mb-2 p-2 article-avatar">
+                            <div className="flex items-center mb-2 p-2">
                                 <img
                                     src={`https://i.pravatar.cc/50?img=${displayIndex + 1}`}
                                     alt={`Avatar of ${article.author}`}
@@ -123,10 +118,10 @@ const SportsArticles = () => {
                                     </p>
                                 </div>
                             </div>
-                            <h2 className="font-josefin font-bold text-lg md:text-xl italic text-[#262626] mb-2 article-title p-2">
+                            <h2 className="font-josefin font-bold text-lg md:text-xl italic text-[#262626] mb-2 p-2">
                                 {article.title}
                             </h2>
-                            <p className="font-dm font-normal text-base leading-6 text-[#696868] pt-2 article-description p-2">
+                            <p className="font-dm font-normal text-base leading-6 text-[#696868] p-2">
                                 {article.description}
                             </p>
                         </div>
@@ -135,11 +130,11 @@ const SportsArticles = () => {
             </div>
 
             {/* Buttons Row */}
-            <div className="buttons-row flex justify-left w-full top-10">
-                <button onClick={showPreviousArticles} className="bg-[#262626] w-20 h-12 mr-6 rounded-md p-2 text-white">
+            <div className="flex justify-left w-full mt-6">
+                <button onClick={showPreviousArticles} className="bg-[#262626] mr-1 w-20 h-12 rounded-md text-white">
                     ←
                 </button>
-                <button onClick={showNextArticles} className="bg-[#262626] w-20 h-12 rounded-md p-2 text-white">
+                <button onClick={showNextArticles} className="bg-[#262626] w-20 h-12 rounded-md text-white">
                     →
                 </button>
             </div>
