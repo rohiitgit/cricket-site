@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import AOS from "aos";
-import "aos/dist/aos.css"; // AOS styles
-import img5 from '../../public/svg/img5.svg'
+import "aos/dist/aos.css"; 
+import img5 from "../../public/svg/img5.svg";
 
 const clubRankings = [
   {
@@ -163,7 +163,9 @@ const NewClub = () => {
                           {club.rank}
                         </div>
                         <div
-                          className={`w-[26px] h-[21.14px] bg-[url('${club.imgSrc}')]`}
+                          className={`w-[26px] h-[21.14px] bg-[url('${club.imgSrc}')] bg-center bg-cover`}
+                          style={{ backgroundImage: `url(${club.imgSrc})` }}
+                          aria-label={club.name}
                         ></div>
                         <div className="w-[160px] h-[22.66px] left-[825.85px] text-[#262626] text-[14px] leading-[23px] font-normal capitalize">
                           {club.name}
