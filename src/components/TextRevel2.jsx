@@ -38,7 +38,7 @@ const TextReveal = () => {
       scrollTrigger: {
         trigger: section,
         start: "top center",
-        end: `+=${window.innerHeight * 2}`,
+        end: `+=${window.innerHeight}`,
         scrub: true,
         pin: true,
         // markers: true, // Uncomment for debugging
