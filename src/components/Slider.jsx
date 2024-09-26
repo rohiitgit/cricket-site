@@ -72,7 +72,7 @@ const Slider = () => {
   
   return (
     <div
-      className="relative w-full h-screen overflow-hidden"
+      className="relative w-full h-screen overflow-hidden top-20"
       aria-live="polite"
     >
       {/* Slider Row */}

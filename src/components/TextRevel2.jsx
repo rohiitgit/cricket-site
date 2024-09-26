@@ -62,7 +62,7 @@ const TextReveal = () => {
   return (
     <section
       style={{
-        height: "300vh",
+        height: "70vh",
         overflow: "hidden",
         width: "80vw",
         margin: "auto",
@@ -73,7 +73,7 @@ const TextReveal = () => {
       {/* Ensure the parent has enough height */}
       <div
         ref={textRef}
-        className="items-center font-jost font-normal text-[40px] leading-[60px] text-center text-black"
+        className="items-center font-just font-normal text-[40px] leading-[60px] text-center text-black"
         data-aos="fade-up"
       >
         Cricket has the incredible power to unite people from all walks of life,

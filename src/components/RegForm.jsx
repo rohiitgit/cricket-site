@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 
-export default function FormReg() {
+export default function CricketTeamReg() {
   useEffect(() => {
-    console.log("FormReg component mounted");
+    console.log("CricketTeamReg component mounted");
     // Additional initialization logic can go here if needed
   }, []);
 
@@ -63,77 +63,45 @@ export default function FormReg() {
 
   return (
     <div className="w-full max-w-4xl mx-auto bg-white shadow-md rounded-lg">
-      <div className="bg-gradient-to-r from-blue-600 to-purple-600 rounded-t-lg p-6">
-        <h2 className="text-white text-xl font-bold">Form</h2>
-        <p className="text-gray-200">Enter your details below.</p>
+      <div className="bg-gradient-to-r from-green-600 to-blue-600 rounded-t-lg p-6">
+        <h2 className="text-white text-xl font-bold">Cricket Team Registration</h2>
+        <p className="text-gray-200">Fill in the details below to register.</p>
       </div>
       <div className="p-6 space-y-6">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {renderInput("name", "Name", "Enter your name")}
-          {renderInput("father", "Father's name", "Enter your father's name")}
-          {renderInput("mother", "Mother's name", "Enter your mother's name")}
-          {renderInput("dob", "Date of birth", "", "date")}
-          {renderSelect("course", "Course", [
-            { value: "be", label: "B.E." },
-            { value: "btech", label: "B.Tech" },
-            { value: "mbbs", label: "MBBS" },
-            { value: "bcom", label: "B.Com" },
-          ])}
-          {renderInput("session", "Session", "Enter session")}
-          {renderInput("university", "University", "Enter university")}
-          {renderInput("mobile", "Mobile number", "Enter your mobile number", "tel")}
+          {renderInput("playerName", "Player Name", "Enter your name")}
+          {renderInput("age", "Age", "Enter your age", "number")}
+          {renderInput("dob", "Date of Birth", "", "date")}
+          {renderInput("address", "Address", "Enter your address")}
+          {renderInput("mobile", "Mobile Number", "Enter your mobile number", "tel")}
           {renderInput("email", "Email", "Enter your email", "email")}
-          {renderSelect("category", "Category", [
-            { value: "gen", label: "GEN" },
-            { value: "obc", label: "OBC" },
-            { value: "sc", label: "SC" },
-            { value: "st", label: "ST" },
+          {renderSelect("role", "Preferred Role", [
+            { value: "batsman", label: "Batsman" },
+            { value: "bowler", label: "Bowler" },
+            { value: "allrounder", label: "All-rounder" },
+            { value: "wicketkeeper", label: "Wicketkeeper" },
           ])}
-          {renderTextarea("address", "Address", "Enter your address")}
-          {renderSelect("blood", "Blood group", [
-            { value: "a+", label: "A+" },
-            { value: "a-", label: "A-" },
-            { value: "b+", label: "B+" },
-            { value: "b-", label: "B-" },
-            { value: "ab+", label: "AB+" },
-            { value: "ab-", label: "AB-" },
-            { value: "o+", label: "O+" },
-            { value: "o-", label: "O-" },
+          {renderSelect("experience", "Playing Experience (Years)", [
+            { value: "0", label: "0" },
+            { value: "1", label: "1" },
+            { value: "2", label: "2" },
+            { value: "3", label: "3" },
+            { value: "4", label: "4" },
+            { value: "5+", label: "5+" },
           ])}
-          {renderTextarea("identification", "Identification mark(s)", "Enter your identification mark(s)")}
-          {renderSelect("marital", "Marital status", [
-            { value: "single", label: "Single" },
-            { value: "married", label: "Married" },
-            { value: "divorced", label: "Divorced" },
-            { value: "widowed", label: "Widowed" },
-          ])}
-          {renderInput("aadhaar", "Aadhaar number", "Enter your Aadhaar number", "number")}
-          {renderInput("passing", "Passing year of last education", "Enter passing year", "number")}
-          {renderSelect("mode", "Mode of study", [
-            { value: "regular", label: "Regular" },
-            { value: "online", label: "Online" },
-            { value: "distance", label: "Distance" },
-            { value: "na", label: "Regular-NA" },
-          ])}
-        </div>
-        <div className="space-y-4">
-          {renderUpload("10th Marksheet/ Certificate")}
-          {renderUpload("12th Marksheet/ Certificate")}
-          {renderUpload("Graduation Marksheet")}
-          {renderUpload("Last degree Marksheet/ Certificate")}
-          {renderUpload("Other technical qualifications")}
+          {renderTextarea("achievements", "Previous Achievements", "List any relevant achievements")}
+          {renderUpload("ID Proof")}
+          {renderUpload("Medical Certificate")}
         </div>
       </div>
       <div className="flex justify-end gap-2 p-6">
         <button className="border border-gray-300 text-gray-700 px-4 py-2 rounded hover:bg-gray-100">
           Cancel
         </button>
-        <button className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+        <button className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">
           Submit
         </button>
       </div>
     </div>
   );
 }
-
-
